@@ -1,37 +1,34 @@
-// Import the functions you need from the SDKs you need
+// app.js
+
+require('dotenv').config(); // Load environment variables
+
+// Import Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
 
-// Your web app's Firebase configuration
+// Firebase configuration from environment variables
 const firebaseConfig = {
-    apiKey: "AIzaSyDYXmIEdDnAzXXj-vW7RGfJ2w5HJXoES5g",
-    authDomain: "minimal-dev-14f70.firebaseapp.com",
-    projectId: "minimal-dev-14f70",
-    storageBucket: "minimal-dev-14f70.appspot.com",
-    messagingSenderId: "1073042780772",
-    appId: "1:1073042780772:web:31050f2c6f7aa54235a571"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Environment-specific API URL
-const apiUrls = {
-    dev: 'https://minimal-backend-1073042780772.asia-south1.run.app/test',
-    stag: 'https://minimal-app-stag-50348277979.us-central1.run.app/test',
-    prod: 'https://minimal-app-prod-50348277979.us-central1.run.app/test',
-    localhost: 'http://127.0.0.1:5000/test'
-};
-
-// Determine the environment
-const environment = 'dev'; // Change this to 'staging' or 'production' as needed
+// API URL from environment variables
+const apiUrl = process.env.API_URL;
 
 // Fetch the message from the backend
-fetch(apiUrls[environment])
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('message').textContent = data.message;
-    })
-    .catch(error => {
-        document.getElementById('message').textContent = 'Error fetching message';
-        console.error('Error:', error);
-    });
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('message').textContent = data.message;
+  })
+  .catch(error => {
+    document.getElementById('message').textContent = 'Error fetching message';
+    console.error('Error:', error);
+  });
