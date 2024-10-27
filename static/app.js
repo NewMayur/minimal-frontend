@@ -16,7 +16,7 @@ const app = initializeApp(firebaseConfig);
 
 // Environment-specific API URL
 const apiUrls = {
-    dev: 'https://minimal-app-1073042780772.asia-south1.run.app/test',
+    dev: 'https://minimal-backend-1073042780772.asia-south1.run.app/test',
     stag: 'https://minimal-app-stag-50348277979.us-central1.run.app/test',
     prod: 'https://minimal-app-prod-50348277979.us-central1.run.app/test',
     localhost: 'http://127.0.0.1:5000/test'
