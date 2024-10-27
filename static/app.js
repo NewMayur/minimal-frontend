@@ -23,7 +23,7 @@ const apiUrls = {
 };
 
 // Determine the environment
-const environment = 'localhost'; // Change this to 'staging' or 'production' as needed
+const environment = 'dev'; // Change this to 'staging' or 'production' as needed
 
 // Fetch the message from the backend
 fetch(apiUrls[environment])
